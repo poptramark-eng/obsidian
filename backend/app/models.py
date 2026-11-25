@@ -12,6 +12,8 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
+GRADE_LEVEL_DB = Enum(GradeLevel, name="grade_level")
+
 
 def enum_values(enum_cls: type[enum.Enum]) -> list[str]:
     return [item.value for item in enum_cls]
@@ -116,7 +118,7 @@ class Learner(TimestampMixin, Base):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     gender: Mapped[str] = mapped_column(String(20), nullable=False)
     date_of_birth: Mapped[date | None] = mapped_column(Date)
-    current_grade: Mapped[GradeLevel] = mapped_column(Enum(GradeLevel, name="grade_level"), nullable=False)
+    current_grade: Mapped[GradeLevel] = mapped_column(GRADE_LEVEL_DB, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     school: Mapped[School] = relationship(back_populates="learners")
 
