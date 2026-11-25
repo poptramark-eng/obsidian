@@ -12,8 +12,6 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
-GRADE_LEVEL_DB = Enum(GradeLevel, name="grade_level")
-
 
 def enum_values(enum_cls: type[enum.Enum]) -> list[str]:
     return [item.value for item in enum_cls]
@@ -33,6 +31,9 @@ class GradeLevel(str, enum.Enum):
     GRADE_7 = "GRADE_7"
     GRADE_8 = "GRADE_8"
     GRADE_9 = "GRADE_9"
+
+
+GRADE_LEVEL_DB = Enum(GradeLevel, name="grade_level")
 
 
 class RubricBand(str, enum.Enum):
