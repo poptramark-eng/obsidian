@@ -42,9 +42,9 @@ SUPER_ADMIN, SCHOOL_ADMIN, TEACHER. Do not introduce roles without a documented 
 ## Milestones
 - [x] Confirm repository identity and independent project boundary.
 - [x] Create initial README.
-- [ ] Step 1: scaffold, Compose, environment template, backend/frontend skeleton.
+- [x] Step 1: initial scaffold, Compose, environment template, backend/frontend skeleton committed (runtime verification pending).
 - [ ] Step 1 verification: validate Compose and build/start services where runtime permits.
-- [ ] Step 2: SQLAlchemy async models, Alembic initial migration, deterministic Kenyan CBE demo seed.
+- [x] Step 2: initial SQLAlchemy async domain models, Alembic environment/initial migration, deterministic Kenyan CBE demo seed committed (runtime verification pending).
 - [ ] Step 2 verification: compile/import, migrate disposable PostgreSQL, seed idempotently, test money and tenant constraints.
 - [ ] Step 3: JWT/RBAC, tenant dependencies, bulk assessment APIs, pathway service.
 - [ ] Step 4: Paystack service and secure idempotent webhook engine.
@@ -62,10 +62,11 @@ SUPER_ADMIN, SCHOOL_ADMIN, TEACHER. Do not introduce roles without a documented 
 
 ## Current state — 2026-11-25
 - Repository: poptramark-eng/obsidian, default branch main.
-- README.md created.
+- Added README, independent-product ADR, project-state file, Docker Compose, .env.example, backend package/settings/async DB/models/Alembic/seed, and Next.js app skeleton.
+- Demo seed creates two Kisii schools, four school users, 30 learners, Grade 7–9 sample learning-area catalog and sample rubrics/competencies. Demo descriptors are explicitly illustrative.
 - No Sentinel code or assumptions are intentionally reused.
-- User asked to start Steps 1 and 2.
-- Next: scaffold Compose/backend/frontend, implement models and demo seed, then verify each milestone.
+- Runtime verification has NOT been run from this session. Step 1/2 are scaffolded, not yet verified.
+- Next: validate Python imports/SQLAlchemy metadata/Alembic against PostgreSQL; validate Docker Compose and Next.js build; fix any issues before Step 3.
 
 ## Session handoff protocol
 At every session end, update milestone checkboxes, current state, changed paths, validation commands/results, decisions, blockers and exact next action. Never claim tests passed unless they were run. Keep this file as the first document future agents read.
