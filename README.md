@@ -1,22 +1,23 @@
 # Kenyan CBE Assessment Management System
 
-A multi-tenant school assessment platform for Kenya's Competency-Based Education workflows.
+An independent, focused MVP for Kenyan Competency-Based Education assessment workflows.
 
-## Project status
-
-See [`docs/PROJECT_STATE.md`](docs/PROJECT_STATE.md) for the authoritative continuation brief, decisions, milestones, and next actions.
+## Start here
+- **Project continuation state:** [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md)
+- **Architecture decisions:** [docs/decisions/](docs/decisions/)
+- Backend: [backend/README.md](backend/README.md)
+- Frontend: [frontend/README.md](frontend/README.md)
 
 ## Stack
-
 - Backend: Python 3.12+, FastAPI, SQLAlchemy 2 async, Alembic, Pydantic v2
-- Data/services: PostgreSQL, Redis, Arq
+- Data/jobs: PostgreSQL, Redis, Arq
 - Frontend: Next.js App Router, React, TypeScript, Tailwind CSS
-- Payments: Paystack only (M-Pesa Express/STK Push, cards, subaccounts, transaction splits, subscriptions)
+- Payments: Paystack only
 
 ## Local development
+Copy `.env.example` to `.env`, replace development secrets, then run `docker compose up --build`.
 
-Copy `.env.example` to `.env`, then run `docker compose up --build`. See `backend/README.md` and `frontend/README.md` as those milestones land.
+## Strict scope
+No transport, library, hostel, HR/payroll or generic ERP modules. Money is stored as BIGINT KES cents. Every school-owned record must be tenant scoped. Paystack webhooks must be verified against raw request bytes and processed idempotently.
 
-## Scope guardrails
-
-This is not a generic school ERP. Do not add transport, library, hostel, or HR/payroll modules. Do not use floating-point values for money. All school-owned records must be tenant-scoped. Paystack webhooks must be signature-verified against raw request bytes and processed idempotently.
+Demo curriculum content is illustrative and must not be represented as official KICD content.
